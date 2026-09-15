@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Ardina Mulya Perkasa - Facilities Service Specialist</title>
+    
+    <!-- Browser Tab Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+
+    <style>
+        :root {
+            --primary-blue: #0A2540;
+            --accent-gold: #D4AF37;
+            --secondary-blue: #1E3A8A;
+            --bg-light: #F8FAFC;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Contact Bar */
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: #E2E8F0;
+            font-size: 0.85rem;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 101;
+        }
+
+        .top-bar a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Navbar Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .company-tagline {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn {
+            background-color: var(--secondary-blue);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* --- SCROLL-DRIVEN VIDEO HERO SECTION --- */
+        .hero-scroll-wrapper {
+            height: 250vh; /* Gives scroll space to scrub through the video */
+            position: relative;
+        }
+
+        .hero-sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Background Video */
+        #scroll-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Dark Overlay over Video for Readability */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.85) 0%, rgba(30, 58, 138, 0.75) 100%);
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            text-align: center;
+            max-width: 850px;
+            padding: 0 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.25);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-content h1 {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #25D366;
+            color: white;
+            padding: 0.85rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid white;
+            padding: 0.8rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-blue);
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .card-body h3 {
+            font-size: 1.35rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-body p {
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            font-size: 0.92rem;
+        }
+
+        .card-btn {
+            display: block;
+            text-align: center;
+            background-color: var(--bg-light);
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .card-btn:hover {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            padding: 3.5rem 2rem 1.5rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            color: #94A3B8;
+            margin-bottom: 0.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #94A3B8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div>📍 Ruko Rich Palace Blok D3, Srengseng, Kembangan, Jakarta Barat 11630</div>
+        <div>📞 Office: 021 2254 5354 | 💬 WA: <a href="https://wa.me/6285318442345" target="_blank">085318442345</a></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo-container">
+                <img src="assets/logo.jpeg" alt="PT Ardina Mulya Perkasa Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="company-name">PT ARDINA MULYA PERKASA</span>
+                    <span class="company-tagline">Facilities Service Specialist</span>
+                </div>
+            </a>
+            <a href="https://wa.me/6285318442345" class="nav-btn" target="_blank">Hubungi Kami</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Scroll-Driven Video -->
+    <div class="hero-scroll-wrapper" id="hero-scroll">
+        <div class="hero-sticky-container">
+            
+            <!-- Google Flow Video (Falls back to hero-bg.jpeg if video isn't ready) -->
+            <video id="scroll-video" muted preload="auto" playsinline poster="assets/hero-bg.jpeg">
+                <source src="assets/walkthrough.mp4" type="video/mp4">
+            </video>
+            
+            <div class="video-overlay"></div>
+
+            <div class="hero-content">
+                <div class="badge">Facilities Service Specialist • 10+ Tahun Pengalaman</div>
+                <h1>Solusi Terpadu Outsourcing & Jasa Kontraktor Gedung</h1>
+                <p>PT Ardina Mulya Perkasa menyediakan tenaga kerja profesional dan bersertifikasi untuk Keamanan (Security Guard), Kebersihan (Cleaning Services), Pengelolaan Taman, Support Bisnis, serta Layanan Kontraktor.</p>
+                
+                <div class="hero-buttons">
+                    <a href="https://wa.me/6285318442345?text=Halo%20PT%20Ardina%20Mulya%20Perkasa,%20saya%20ingin%20konsultasi%20layanan" class="btn-primary" target="_blank">
+                        💬 Chat Customer Service
+                    </a>
+                    <a href="#layanan" class="btn-secondary">Lihat Layanan Kami</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <img src="assets/about.jpeg" alt="Tentang PT Ardina Mulya Perkasa" class="about-img">
+        <div class="about-content">
+            <h2>Tentang PT Ardina Mulya Perkasa</h2>
+            <p>Berdiri selama lebih dari 10 tahun, PT Ardina Mulya Perkasa adalah spesialis penyedia jasa pengelolaan fasilitas gedung (Facilities Service Specialist) dan pekerjaan kontraktor terpercaya di Indonesia.</p>
+            <p>Kami berkomitmen untuk memberikan layanan outsourcing dengan standar integritas, keahlian, dan profesionalisme tinggi untuk mendukung kelancaran operasional bisnis mitra kami.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="layanan">
+        <div class="section-title">
+            <h2>Layanan Spesialis Kami</h2>
+            <p>Solusi komprehensif untuk keamanan, kebersihan, perawatan gedung, dan pekerjaan kontraktor</p>
+        </div>
+
+        <div class="grid-services">
+
+            <!-- Security Service -->
+            <div class="service-card">
+                <img src="assets/service-security.jpeg" alt="Security Guard Service" class="card-img">
+                <div class="card-body">
+                    <div>
+                        <h3>Security Guard Service</h3>
+                        <p>Penyediaan personel keamanan profesional, terlatih, dan bersertifikasi untuk menjaga ketertiban serta aset gedung perusahaan Anda.</p>
+                    </div>
+                    <a href="https://wa.me/6285318442345?text=Saya%20tertarik%20dengan%20Security%20Guard%20Service" class="card-btn" target="_blank">Konsultasi Security</a>
+                </div>
+            </div>
+
+            <!-- Cleaning Service -->
+            <div class="service-card">
+                <img src="assets/service-cleaning.jpeg" alt="Cleaning Services" class="card-img">
+                <div class="card-body">
+                    <div>
+                        <h3>Cleaning Services</h3>
+                        <p>Layanan perawatan kebersihan interior dan eksterior gedung secara menyeluruh dengan peralatan modern dan standar higienis tinggi.</p>
+                    </div>
+                    <a href="https://wa.me/6285318442345?text=Saya%20tertarik%20dengan%20Cleaning%20Services" class="card-btn" target="_blank">Konsultasi Kebersihan</a>
+                </div>
+            </div>
+
+            <!-- Gardener Service -->
+            <div class="service-card">
+                <img src="assets/service-gardening.jpeg" alt="Gardener Service" class="card-img">
+                <div class="card-body">
+                    <div>
+                        <h3>Gardener Service</h3>
+                        <p>Perawatan, penataan, dan pemeliharaan area hijau atau taman gedung agar tetap asri, indah, dan merepresentasikan citra positif perusahaan.</p>
+                    </div>
+                    <a href="https://wa.me/6285318442345?text=Saya%20tertarik%20dengan%20Gardener%20Service" class="card-btn" target="_blank">Konsultasi Taman</a>
+                </div>
+            </div>
+
+            <!-- Contractor Service -->
+            <div class="service-card">
+                <img src="assets/service-contractor.jpeg" alt="Jasa Kontraktor Gedung" class="card-img">
+                <div class="card-body">
+                    <div>
+                        <h3>Jasa Kontraktor</h3>
+                        <p>Layanan renovasi, konstruksi sipil, pemeliharaan fisik bangunan, dan perawatan fasilitas gedung komersial maupun kantor.</p>
+                    </div>
+                    <a href="https://wa.me/6285318442345?text=Saya%20tertarik%20dengan%20Jasa%20Kontraktor" class="card-btn" target="_blank">Konsultasi Kontraktor</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>PT Ardina Mulya Perkasa</h4>
+                <p>Specialist Layanan Fasilitas Gedung, Security Guard, Cleaning Service, Business Support, Gardener Service, dan Kontraktor Pemeliharaan.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Kontak Layanan (CS)</h4>
+                <p>☎️ Office: 021 2254 5354</p>
+                <p>📱 Mobile / WA: 085318442345</p>
+                <p>🌐 Instagram: @ardinamulyaperkasa</p>
+            </div>
+            <div class="footer-col">
+                <h4>Alamat Kantor</h4>
+                <p>Ruko Rich Palace Blok D3</p>
+                <p>Kel. Srengseng, Kec. Kembangan</p>
+                <p>Jakarta Barat, DKI Jakarta 11630</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 PT Ardina Mulya Perkasa. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- --- JAVASCRIPT FOR SCROLL-CONTROLLED VIDEO ANIMATION --- -->
+    <script>
+        const video = document.getElementById('scroll-video');
+        const heroWrapper = document.getElementById('hero-scroll');
+
+        // Function to synchronize video duration with page scroll
+        function updateVideoOnScroll() {
+            if (!video.duration) return;
+
+            const wrapperTop = heroWrapper.offsetTop;
+            const wrapperHeight = heroWrapper.offsetHeight - window.innerHeight;
+            const scrollPos = window.scrollY - wrapperTop;
+
+            // Calculate fraction between 0.0 and 1.0
+            let scrollFraction = scrollPos / wrapperHeight;
+            scrollFraction = Math.max(0, Math.min(1, scrollFraction));
+
+            // Set video time matching scroll percentage
+            video.currentTime = video.duration * scrollFraction;
+        }
+
+        // Run when video metadata is ready
+        video.addEventListener('loadedmetadata', () => {
+            window.addEventListener('scroll', updateVideoOnScroll);
+        });
+
+        // Backup check in case metadata loaded instantly from cache
+        if (video.readyState >= 1) {
+            window.addEventListener('scroll', updateVideoOnScroll);
+        }
+    </script>
+
+</body>
+</html>
